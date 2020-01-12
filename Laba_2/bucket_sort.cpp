@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+typedef unsigned int u_int;
+typedef unsigned long long u_long;
+
+#define l first
+#define r second
+
+int m = 1 << 16;
+u_int cur = 0, a, b, c = 1 << 16;
+u_int x[100009];
+
+u_int nextRand24() {
+    cur = cur * a + b;
+    return cur >> 8;
+}
+
+u_int nextRand32() {
+    u_int a = nextRand24(), b = nextRand24();
+    return (a << 8) ^ b;
+}
+
+void linear_sort(int n) {
+    vector<pair<int, int> > num(n + 1), num0(n + 1);  // 2 ??????? ?? ??? ???????
+    vector<pair<int, int> > cnt(m);  // ?????????? ?????? ????? ? ????? ????????
+    vector<pair<int, int> > pnt(m);  // ????????? ??? ?????? ????? ? ???? "????????"
+    for (int j = 0; j < m; ++j) {
+        cnt[j] = make_pair(0, 0);
+        pnt[j] = make_pair(1, 1);
+    }
+    for (int i = 1; i <= n; ++i) {  // ????????? ???????
+        num[i].l = x[i] / c;
+        cnt[num[i].l].l++;
+        num[i].r = x[i] % c;
+        cnt[num[i].r].r++;
+    }
+    for (int j = 1; j < m; ++j) {  // ????????? ????????? ??? ?????? ?????
+        pnt[j].l = pnt[j-1].l + cnt[j-1].l;
+        pnt[j].r = pnt[j-1].r + cnt[j-1].r;
+    }
+    for (int i = 1; i <= n; ++i) {  // ?????????? ?????????? ?? ?????? ?????
+        int val = num[i].r;
+        num0[pnt[val].r] = num[i];
+        pnt[val].r++;
+    }
+    for (int i = 1; i <= n; ++i) {  // ?????????? ?????????? ?? ?????? ?????
+        int val = num0[i].l;
+        num[pnt[val].l] = num0[i];
+        pnt[val].l++;
+    }
+    for (int i = 1; i <= n; ++i)
+        x[i] = num[i].l * c + num[i].r;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int t, n;
+    cin >> t >> n;
+    for (int h = 0; h < t; h++) {
+        cin >> a >> b;
+        for (int i = 1; i <= n; ++i)
+            x[i] = nextRand32();
+        linear_sort(n);
+        u_long res = 0;
+        for (long long i = 1; i <= n; ++i)
+            res += ((u_long) x[i]) * ((u_long)i);
+        cout << res << '\n';
+    }
+}
