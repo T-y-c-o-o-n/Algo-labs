@@ -36,7 +36,6 @@ int main() {
   int m;
   cin >> n >> m;
   cin >> a[0];
-  // cout << a[0];
   for (int i = 1; i < n; ++i) {
     a[i] = (23 * a[i-1] + 21563) % 16714589;
   }
