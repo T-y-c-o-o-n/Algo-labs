@@ -11,7 +11,7 @@ size_t const MAX_N = 500009;
 size_t n_real;  // real length of array
 size_t n;  // convenient virtual length of array
 static int64_t *t_min = new int64_t[MAX_N * 4 + 9];
-int64_t const E = INT64_MAX;  // Нейтральный элемент бинарной операции
+int64_t const E = INT64_MAX;  // neutral element of binary operation
 
 int64_t bin_op(int64_t a, int64_t b) {
   return std::min(a, b);

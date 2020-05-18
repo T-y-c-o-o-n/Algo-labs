@@ -37,7 +37,7 @@ size_t const MAX_N = 500009;
 size_t n_real;  // real length of array
 size_t n;  // convenient virtual length of array
 matrix *t_prod = new matrix[MAX_N * 4 + 9];
-matrix const E(1, 0, 0, 1);  // Нейтральный элемент бинарной операции
+matrix const E(1, 0, 0, 1);  // neutral element of binary operation
 int64_t mod;
 
 matrix bin_op(matrix a, matrix b) {
