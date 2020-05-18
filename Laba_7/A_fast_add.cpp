@@ -19,7 +19,8 @@ int main() {
     std::cin >> m >> q;
     std::cin >> a >> b;
 
-    static uint32_t arr[n + 8];
+    static uint32_t arr[n + 8];  // HERE
+
     for (size_t i = 0; i < n; ++i) {
         arr[i] = 0;
     }
