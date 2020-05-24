@@ -16,7 +16,7 @@ int64_t const E = INT64_MAX;  // neutral element of binary operation
 int64_t bin_op(int64_t a, int64_t b) {
   return std::min(a, b);
 }
-int64_t prod(size_t l, size_t r, size_t v, size_t tl, size_t tr) {
+int64_t min(size_t l, size_t r, size_t v, size_t tl, size_t tr) {
   if (r <= tl || tr <= l) {
     return E;  // E
   }
