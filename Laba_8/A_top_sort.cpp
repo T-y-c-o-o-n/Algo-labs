@@ -17,13 +17,13 @@ typedef pair<v_t, v_t> edge;
 
 size_t N, M;
 
-vector<edge> E;
-vector<vector<v_t> > EE;
+vector<edge> G;
+vector<vector<v_t> > E;
 vector<int> deg;
 vector<v_t> ans;
 
 void top_sort_1() {
-	for (edge vu : E) {
+	for (edge vu : G) {
 		deg[to_sz(vu.second)]++;
 	}
 	queue<v_t> Q;
@@ -36,7 +36,7 @@ void top_sort_1() {
 		v_t v = Q.front();
 		Q.pop();
 		ans.push_back(v);
-		for (v_t u : EE[to_sz(v)]) {
+		for (v_t u : E[to_sz(v)]) {
 			deg[to_sz(u)]--;
 			if (deg[to_sz(u)] == 0) {
 				Q.push(u);
@@ -48,12 +48,12 @@ void top_sort_1() {
 int main() {
 	cin >> N >> M;
 	deg.resize(N + 1, 0);
-	EE.resize(N + 1);
+	E.resize(N + 1);
 	for (size_t i = 0; i < M; ++i) {
 		v_t from, to;
 		cin >> from >> to;
-		E.emplace_back(from, to);
-		EE[to_sz(from)].push_back(to);
+		G.emplace_back(from, to);
+		E[to_sz(from)].push_back(to);
 	}
 	top_sort_1();
 	if (ans.size() == N) {
