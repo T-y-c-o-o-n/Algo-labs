@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/M_Tiv_tribe.cpp
+iostream
+-
+cstdint
+-
+cstddef
+-
+vector
+-
+queue
+-
+string
+-
+
