@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/M_Tiv_tribe.cpp" "/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/CMakeFiles/Laba_8.dir/M_Tiv_tribe.cpp.o"
+  "/home/tycoon/Documents/y2019/algo/labs/Laba_8/R_train.cpp" "/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/CMakeFiles/Laba_8.dir/R_train.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

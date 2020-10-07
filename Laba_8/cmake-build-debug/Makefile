@@ -48,10 +48,10 @@ RM = /home/tycoon/snap/clion-2020.1.1/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8
+CMAKE_SOURCE_DIR = /home/tycoon/Documents/y2019/algo/labs/Laba_8
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug
+CMAKE_BINARY_DIR = /home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/CMakeFiles /home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/CMakeFiles /home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ Laba_8/fast:
 	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/build
 .PHONY : Laba_8/fast
 
-M_Tiv_tribe.o: M_Tiv_tribe.cpp.o
+R_train.o: R_train.cpp.o
 
-.PHONY : M_Tiv_tribe.o
+.PHONY : R_train.o
 
 # target to build an object file
-M_Tiv_tribe.cpp.o:
-	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/M_Tiv_tribe.cpp.o
-.PHONY : M_Tiv_tribe.cpp.o
+R_train.cpp.o:
+	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/R_train.cpp.o
+.PHONY : R_train.cpp.o
 
-M_Tiv_tribe.i: M_Tiv_tribe.cpp.i
+R_train.i: R_train.cpp.i
 
-.PHONY : M_Tiv_tribe.i
+.PHONY : R_train.i
 
 # target to preprocess a source file
-M_Tiv_tribe.cpp.i:
-	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/M_Tiv_tribe.cpp.i
-.PHONY : M_Tiv_tribe.cpp.i
+R_train.cpp.i:
+	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/R_train.cpp.i
+.PHONY : R_train.cpp.i
 
-M_Tiv_tribe.s: M_Tiv_tribe.cpp.s
+R_train.s: R_train.cpp.s
 
-.PHONY : M_Tiv_tribe.s
+.PHONY : R_train.s
 
 # target to generate assembly for a file
-M_Tiv_tribe.cpp.s:
-	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/M_Tiv_tribe.cpp.s
-.PHONY : M_Tiv_tribe.cpp.s
+R_train.cpp.s:
+	$(MAKE) -f CMakeFiles/Laba_8.dir/build.make CMakeFiles/Laba_8.dir/R_train.cpp.s
+.PHONY : R_train.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Laba_8"
-	@echo "... M_Tiv_tribe.o"
-	@echo "... M_Tiv_tribe.i"
-	@echo "... M_Tiv_tribe.s"
+	@echo "... R_train.o"
+	@echo "... R_train.i"
+	@echo "... R_train.s"
 .PHONY : help
 
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/M_Tiv_tribe.cpp
+/home/tycoon/Documents/y2019/algo/labs/Laba_8/R_train.cpp
 iostream
 -
 cstdint
@@ -15,8 +15,6 @@ cstddef
 -
 vector
 -
-queue
--
-string
+algorithm
 -
 

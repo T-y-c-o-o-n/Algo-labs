@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug"/>
+				<Option working_dir="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug"/>
+				<Option working_dir="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug"/>
+				<Option working_dir="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Laba_8">
-				<Option output="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Laba_8" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug"/>
+				<Option output="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Laba_8" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laba_8"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laba_8"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Laba_8/fast">
-				<Option output="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Laba_8" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug"/>
+				<Option output="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Laba_8" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,17 +77,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laba_8/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laba_8/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/M_Tiv_tribe.cpp">
+		<Unit filename="/home/tycoon/Documents/y2019/algo/labs/Laba_8/R_train.cpp">
 			<Option target="Laba_8"/>
 		</Unit>
-		<Unit filename="/home/tycoon/Documents/y2019/algo/Algo_Labs/Laba_8/CMakeLists.txt">
+		<Unit filename="/home/tycoon/Documents/y2019/algo/labs/Laba_8/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

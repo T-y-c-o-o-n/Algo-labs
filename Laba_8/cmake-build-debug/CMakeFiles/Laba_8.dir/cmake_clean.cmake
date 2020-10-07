@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Laba_8.dir/M_Tiv_tribe.cpp.o"
+  "CMakeFiles/Laba_8.dir/R_train.cpp.o"
   "Laba_8"
   "Laba_8.pdb"
 )
