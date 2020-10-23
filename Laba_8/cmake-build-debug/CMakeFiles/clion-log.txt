@@ -1,4 +1,0 @@
-/home/tycoon/snap/clion-2020.1.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tycoon/Documents/y2019/algo/labs/Laba_8
--- Configuring done
--- Generating done
--- Build files have been written to: /home/tycoon/Documents/y2019/algo/labs/Laba_8/cmake-build-debug
