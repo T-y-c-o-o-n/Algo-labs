@@ -31,19 +31,17 @@ bool operator<(const edge &a, const edge &b) {
 }
 
 size_t n;
-vector<multiset<edge>> edges;
+vector<vector<edge>> edges;
+vector<bool> used;
 
 void euler(v_t v, vector<pair<v_t, v_t>> &order) {
-    while (!edges[v].empty()) {
-        auto edge_it = edges[v].begin();
-        v_t to = (*edge_it).to;
-
-        edges[v].erase(edge_it);
-        auto copy_edge_it = edges[to].find(edge(v));
-        if (copy_edge_it != edges[to].end()) {
-            edges[to].erase(copy_edge_it);
+    for (edge &vu : edges[v]) {
+        if (vu.deleted) {
+            continue;
         }
-
+        v_t to = vu.to;
+        vu.deleted = true;
+        edges[to][vu.copy_ind].deleted = true;
         euler(to, order);
         order.emplace_back(to, v);
     }
@@ -55,44 +53,74 @@ int main() {
     cout.tie(nullptr);
 
     // input
-    size_t m = 0;
-    cin >> n;
-    size_t cnt_odd = 0;
-    v_t odd_v = -1;
-    edges.assign(n + 1, multiset<edge>());
-    for (v_t v = 1; v <= (v_t) n; ++v) {
-        size_t deg;
-        cin >> deg;
-        m += deg;
-        if ((deg % 2) == 1) {
-            cnt_odd++;
-            odd_v = v;
-        }
-        for (size_t i = 0; i < deg; ++i) {
-            v_t u;
-            cin >> u;
-            edges[v].insert(edge(u));
-        }
+    size_t m;
+    cin >> n >> m;
+    v_t dop_vertex = (v_t) (n + 1);
+    edges.assign(n + 5, vector<edge>());
+    for (size_t i = 0; i < m; ++i) {
+        v_t v, u;
+        cin >> v >> u;
+        edges[v].push_back(edge(u));
+        edges[u].push_back(edge(v));
+        edges[v].back().copy_ind = edges[u].size() - 1;
+        edges[u].back().copy_ind = edges[v].size() - 1;
     }
-    m /= 2;
 
-    if (cnt_odd != 0 && cnt_odd != 2) {
-        return cout << "-1\n", 0;
+    // adding edges between dop vertex and odd vertices
+    for (v_t v = 1; v <= (v_t) n; ++v) {
+        if (edges[v].size() % 2 == 1) {
+            edges[v].push_back(edge(dop_vertex));
+            edges[dop_vertex].push_back(edge(v));
+            edges[v].back().copy_ind = edges[dop_vertex].size() - 1;
+            edges[dop_vertex].back().copy_ind = edges[v].size() - 1;
+        }
     }
-    vector<pair<v_t, v_t>> order;
-    v_t start = (odd_v == -1) ? 1 : odd_v;
-    euler(start, order);
-    if (order.size() != m) {
-        return cout << "-1\n", 0;
+
+    // euler tour
+    vector<pair<v_t, v_t>> edge_order;
+    used.resize(dop_vertex + 1);
+    euler(dop_vertex, edge_order);
+    for (v_t v = 1; v <= dop_vertex; ++v) {
+        if (!used[v]) {
+            euler(v, edge_order);
+        }
     }
-    cout << m << '\n';
-    if (!order.empty()) {
-        cout << order.front().first;
-    } else {
-        cout << '1';
+
+    vector<v_t> vertex_order;
+    if (!edge_order.empty()) {
+        vertex_order.push_back(edge_order.front().first);
     }
-    for (auto vu : order) {
-        cout << ' ' << vu.second;
+    for (size_t i = 0; i < edge_order.size(); ++i) {
+        auto &vu = edge_order[i];
+        if (i > 0 && edge_order[i - 1].second != edge_order[i].first) {
+            vertex_order.push_back(dop_vertex);
+            vertex_order.push_back(edge_order[i].first);
+        }
+        vertex_order.push_back(vu.second);
     }
-    cout << '\n';
+
+    // output
+    vector<vector<v_t> > paths;
+    size_t ind = 0;
+    for (size_t i = 0; i < vertex_order.size(); ++i) {
+        v_t v = vertex_order[i];
+        if (i == 0 && v == dop_vertex) {
+            continue;
+        }
+
+        if (v != dop_vertex) {
+            paths.resize(ind + 1);
+            paths[ind].push_back(v);
+        } else {
+            ind++;
+        }
+    }
+
+    cout << paths.size() << '\n';
+    for (auto const &path : paths) {
+        for (v_t v : path) {
+            cout << v << ' ';
+        }
+        cout << '\n';
+    }
 }
