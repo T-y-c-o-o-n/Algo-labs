@@ -95,6 +95,7 @@ int main() {
         if (i > 0 && edge_order[i - 1].second != edge_order[i].first) {
             vertex_order.push_back(dop_vertex);
             vertex_order.push_back(edge_order[i].first);
+
         }
         vertex_order.push_back(vu.second);
     }
