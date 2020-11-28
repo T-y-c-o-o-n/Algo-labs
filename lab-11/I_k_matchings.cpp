@@ -3,100 +3,37 @@
 #include <cstddef>
 #include <vector>
 #include <algorithm>
-#include <queue>
 
 using std::ios_base;
 using std::cin;
 using std::cout;
 using std::vector;
 using std::reverse;
-using std::queue;
 using std::pair;
 using std::min;
 using v_t = int32_t;
 
-#define for_v(v, n) for (v_t v = 0; v < (v_t) n; ++v)
-#define for_i(i, n) for (size_t i = 0; i < (size_t) n; ++i)
+#define for_v(v, n) for (v_t (v) = 0; (v) < (v_t) (n); ++(v))
+#define for_i(i, n) for (size_t (i) = 0; (i) < (size_t) (n); ++(i))
 
 struct edge {
     v_t from, to;
     int64_t cost, cap, flow;
     size_t copy_ind;
+    bool used;
+
+    edge(const edge &other) = default;
 
     edge(v_t from, v_t to, int64_t cost, int64_t cap)
-            : from(from), to(to), cost(cost), cap(cap), flow(0), copy_ind(0) {}
+            : from(from), to(to), cost(cost), cap(cap), flow(0), copy_ind(0), used(false) {}
 
     edge(v_t from, v_t to, int64_t weight)
             : edge(from, to, weight, 0) {}
+
+    edge() : edge(-1, -1, 0) {}
 };
 
 const int64_t INF = std::numeric_limits<int64_t>::max();
-/*
-
-void hungarian_algorithm(size_t n, vector<vector<edge>> &edges, vector<edge> &res) {
-    // первый для вершин левой доли, второй для правой
-    vector<vector<bool>> used(2, vector(n, false));
-    vector<vector<v_t>> pair(2, vector(n, -1));  // пара из паросочетания
-    // минимальное входящее ребро из L+ в правую вершину
-    vector<edge> min_edge(n, {-1, -1, INF});
-
-    vector<int64_t> row_delta(n, 0);  // сколько прибавили к строке
-    vector<int64_t> col_delta(n, 0);  // сколько прибавили к столбцу
-    vector<vector<v_t>> parent(2, vector(n, -1));  // предок по чередующимся цепям
-    size_t matching_size = 0;
-    while (matching_size < n) {
-        edge temp_min_edge(-1, -1, INF);
-        for_v(v, n) {
-            if (min_edge[v].cost < temp_min_edge.cost) {
-                temp_min_edge = min_edge[v];
-            }
-        }
-        for_v(v, n) {
-            if (used[0][v]) {
-                row_delta[v] -= temp_min_edge.cost;
-            }
-            if (used[1][v]) {
-                col_delta[v] += temp_min_edge.cost;
-            }
-        }
-        used[1][temp_min_edge.to] = true;
-        if (pair[1][temp_min_edge.to] == -1) {
-            v_t left = temp_min_edge.from, right = temp_min_edge.to;
-            while (true) {
-                pair[0][left] = right;
-                pair[1][right] = left;
-                parent[1][right] = left;
-                right = parent[0][left];
-                if (right == -1) {
-                    break;
-                }
-                left = parent[1][right];
-            }
-
-            matching_size++;
-
-            for_v(v, n) {
-                if (pair[0][v] == -1) {
-                    used[0][v] = true;
-                } else {
-                    used[0][v] = false;
-                }
-            }
-            used[1].assign(n, false);
-            parent.assign(2, vector(2, -1));
-        } else {
-            v_t v = pair[1][temp_min_edge.to];
-            used[0][v] = true;
-            for (edge &vu : edges[v]) {
-                if (vu.cost < min_edge[vu.to].cost) {
-                    min_edge[vu.to] = vu;
-                }
-            }
-        }
-    }
-    res.emplace_back(1, 2, 3);
-}
-*/
 
 void ford_bellman(size_t n, v_t s, vector<vector<edge>> &edges, vector<int64_t> &dist) {
     dist.assign(n, INF);
@@ -177,11 +114,10 @@ int64_t dfs_find_zero_path_and_push_flow(v_t v, v_t t, int64_t min_cap,
     return 0;
 }
 
-void potential_algorithm(size_t left_size, size_t right_size,
-                         vector<vector<edge>> &edges_original,
-                         vector<edge> &res_edges) {
+void potential_algorithm(size_t left_size, size_t right_size, size_t needed_deg,
+                         vector<vector<edge>> &edges_original, vector<vector<edge>> &subgraph) {
     size_t n = left_size + right_size;
-    v_t s = n, t = n + 1;
+    v_t s = (v_t) n, t = (v_t) n + 1;
     n += 2;
     vector<vector<edge>> edges(n);
     for_v(v, s) {
@@ -190,10 +126,10 @@ void potential_algorithm(size_t left_size, size_t right_size,
         }
     }
     for_v(v, left_size) {
-        insert_edges_into_network(s, v, 0, 1, edges);
+        insert_edges_into_network(s, v, 0, needed_deg, edges);
     }
     for_v(v, right_size) {
-        insert_edges_into_network(v + left_size, t, 0, 1, edges);
+        insert_edges_into_network(v + left_size, t, 0, needed_deg, edges);
     }
     vector<int64_t> phi(n);
     ford_bellman(n, s, edges, phi);
@@ -209,17 +145,67 @@ void potential_algorithm(size_t left_size, size_t right_size,
             phi[v] = d[v] + phi[v] - phi[s];  // equals  d[v] + phi[v]
         }
     }
-    for_v(v, left_size) {
+
+    // filling subgraph
+    subgraph.assign(left_size + right_size, vector<edge>(0));
+    for_v(v, left_size + right_size) {
         for (edge &vu : edges[v]) {
-            if (vu.flow > 0) {
-                int64_t weight = 0;
-                for (edge &vu_original : edges_original[v]) {
-                    if (vu_original.to == vu.to) {
-                        weight = vu_original.cost;
-                        break;
-                    }
+            if (vu.flow > 0 && vu.to < (v_t) (left_size + right_size)) {
+                subgraph[v].emplace_back(vu.from, vu.to, vu.cost);
+            }
+        }
+    }
+}
+
+bool dfs_kuhn(v_t v, int no, vector<vector<edge>> &edges,
+              vector<pair<v_t, int64_t>> &match_left, vector<v_t> &match_right, vector<int> &used) {
+    used[v] = no;
+    for (edge &vu : edges[v]) {
+        if (vu.used) {
+            continue;
+        }
+        if (match_right[vu.to] == -1 || (used[match_right[vu.to]] != no
+                                         && dfs_kuhn(match_right[vu.to], no, edges,
+                                                     match_left, match_right, used))) {
+            match_right[vu.to] = v;
+            match_left[v].first = vu.to;
+            match_left[v].second = vu.cost;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void kuhn(size_t left_size, size_t right_size,
+          vector<vector<edge>> &edges, vector<edge> &matching) {
+    vector<int> used(left_size, -1);  // number of last dfs
+    vector<pair<v_t, int64_t>> match_left(left_size, {-1, 0});
+    vector<v_t> match_right(left_size + right_size, -1);
+    for_v(v, left_size) {
+        if (used[v] != v) {
+            dfs_kuhn(v, v, edges, match_left, match_right, used);
+        }
+    }
+    for_v(v, left_size) {
+        if (match_left[v].first != -1) {
+            matching.emplace_back(v, match_left[v].first, match_left[v].second);
+        }
+    }
+}
+
+void find_k_matchings(size_t left_size, size_t right_size, size_t k, vector<vector<edge>> &edges,
+                      vector<vector<edge>> &matchings) {
+    for_i(i, k) {
+        vector<edge> matching;
+        kuhn(left_size, right_size, edges, matching);
+        matchings.push_back(matching);
+        for (edge &edge_ : matching) {
+            for (edge &vu : edges[edge_.from]) {
+                if (vu.to == edge_.to) {
+                    vu.used = true;
+                    break;
                 }
-                res_edges.emplace_back(v, vu.to, weight);
             }
         }
     }
@@ -230,8 +216,8 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    size_t n;
-    cin >> n;
+    size_t n, k;
+    cin >> n >> k;
     vector<vector<edge>> edges(2 * n);
     for_v(from, n) {
         for_v(to, n) {
@@ -240,18 +226,37 @@ int main() {
             edges[from].emplace_back(from, to + (v_t) n, weight);
         }
     }
-    vector<edge> res_edges;
 
-//    hungarian_algorithm(n, edges, res_edges);
-    potential_algorithm(n, n, edges, res_edges);
+    // найдёт минимальный k-регулярный подграф
+    vector<vector<edge>> subgraph(2 * n);
+    potential_algorithm(n, n, k, edges, subgraph);
+/*
+    3 1
+    1 90 23
+    23 0 23
+    20 20 20
+*/
+
+    // найдёт k паросочетаний
+    vector<vector<edge>> matchings;
+    find_k_matchings(n, n, k, subgraph, matchings);
 
     int64_t ans = 0;
-    for (edge &vu : res_edges) {
-        ans += vu.cost;
+    for (auto &matching : matchings) {
+        for (edge &vu : matching) {
+            ans += vu.cost;
+        }
     }
     cout << ans << '\n';
-    for (edge &vu : res_edges) {
-        cout << (vu.from + 1) << ' ' << (vu.to - n + 1) << '\n';
+    for (auto &matching  : matchings) {
+        vector<v_t> match(n);
+        for (edge &vu : matching) {
+            match[vu.from] = vu.to;
+        }
+        for (v_t u : match) {
+            cout << (u - n + 1) << ' ';
+        }
+        cout << '\n';
     }
 
 
