@@ -53,15 +53,6 @@ int main() {
         }
     }
 
-/*
-    for (auto &line : substr_cnt) {
-        for (int val : line) {
-            cout << val << ' ';
-        }
-        cout << '\n';
-    }
-*/
-
     int query_cnt;
     cin >> query_cnt;
     for (int i = 0; i < query_cnt; ++i) {
