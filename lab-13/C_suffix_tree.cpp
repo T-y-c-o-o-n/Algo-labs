@@ -12,10 +12,9 @@ struct node {
     node *link[sigma_size];
     int depth;
     int start;
-    int no;
 
     node(node *parent, int depth, int start, int no)
-            : parent(parent), suf_link(nullptr), depth(depth), start(start), no(no) {
+            : parent(parent), suf_link(nullptr), depth(depth), start(start) {
         for (auto &val : link) {
             val = nullptr;
         }
